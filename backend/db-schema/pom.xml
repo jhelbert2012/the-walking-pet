@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.thewalkingpets.api</groupId>
+        <artifactId>thewalkingpets-api</artifactId>
+        <version>local-SNAPSHOT</version>
+        <relativePath>../main-parent/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>db-schema</artifactId>
+    <packaging>jar</packaging>
+    <name>The Walking Pets DB Schema generation</name>
+
+    <!-- BUILDING -->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- plugin to refresh index -->
+                <plugin>
+                    <groupId>com.zebra.api</groupId>
+                    <artifactId>zebra-persistence-maven-plugin</artifactId>
+                    <version>local-SNAPSHOT</version>
+                    <configuration>
+                        <driver>${var.hibernate.connection.p6spy.driver_class}</driver>
+                        <url>${var.hibernate.connection.p6spy.url}</url>
+                        <username>${var.hibernate.connection.username}</username>
+                        <password>${var.hibernate.connection.password}</password>
+                        <dialect>${var.hibernate.dialect}</dialect>
+                        <indexDir>${var.hibernate.search.default.indexBase}</indexDir>
+                        <persistenceUnit>${var.persistence.unit.name}</persistenceUnit>
+                        <exportFileName>src/main/resource/sql/dev/D1_0__Initial_Development_version.sql</exportFileName>
+                        <sstFilePath>${project.basedir}/../web-rest/src/main/resource/supplies/zebra-printer-supplies.xlsx</sstFilePath>
+                        <isvFilePath>${project.basedir}/../web-rest/src/main/resource/partners/isv-partners.xlsx</isvFilePath>
+                        <insertsFileName>src/main/resource/sql/dev/D1_1__Migrated_From_Spreadsheet.sql</insertsFileName>
+                        
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>srv-das</artifactId>
+                            <version>${project.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.hibernate</groupId>
+                            <artifactId>hibernate-core</artifactId>
+                            <version>${hibernate.version}</version>
+                            <scope>compile</scope>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.hibernate</groupId>
+                            <artifactId>hibernate-validator</artifactId>
+                            <version>4.1.0.Final</version>
+                            <scope>compile</scope>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.hibernate</groupId>
+                            <artifactId>hibernate-entitymanager</artifactId>
+                            <version>${hibernate.version}</version>
+                            <scope>compile</scope>
+                        </dependency>
+                        <dependency>
+                            <groupId>javax.annotation</groupId>
+                            <artifactId>jsr250-api</artifactId>
+                            <version>1.0</version>
+                            <scope>compile</scope>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                                
+                <!-- plugin to update the DB -->
+                <plugin>
+                    <groupId>com.googlecode.flyway</groupId>
+                    <artifactId>flyway-maven-plugin</artifactId>
+                    <version>1.5</version>
+                    <configuration>
+                        <driver>${var.hibernate.connection.driver_class}</driver>
+                        <url>${var.hibernate.connection.url}</url>
+                        <user>${var.hibernate.connection.username}</user>
+                        <password>${var.hibernate.connection.password}</password>
+                        <baseDir>${var.flyway.baseDir}</baseDir>
+                        <sqlMigrationPrefix>${var.flyway.sqlMigrationPrefix}</sqlMigrationPrefix>
+                        <table>TTR_SCHEMA_VERSION</table>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+        <!-- PLUGIN DEPENDENCIES TO CONNECT TO DB (FLYWAY) -->
+        <extensions>
+            <extension>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </extension>
+        </extensions>
+
+    </build>
+
+</project>

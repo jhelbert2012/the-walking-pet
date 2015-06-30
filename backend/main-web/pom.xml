@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>main-parent</artifactId>
+		<groupId>com.zebra.api</groupId>
+		<version>local-SNAPSHOT</version>
+		<relativePath>../main-parent/pom.xml</relativePath>
+	</parent>
+
+	<artifactId>main-web</artifactId>
+	<packaging>pom</packaging>
+	<name>Parent POM for Zebra Web Projects</name>
+
+	<dependencies>
+		<!-- MONITORING DEPENDENCIES -->
+		<!-- javamelody-core -->
+		<dependency>
+			<groupId>net.bull.javamelody</groupId>
+			<artifactId>javamelody-core</artifactId>
+			<version>1.31.0</version>
+		</dependency>
+		<!-- itext to add PDF export -->
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>2.1.7</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>bcmail-jdk14</artifactId>
+					<groupId>bouncycastle</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>bcprov-jdk14</artifactId>
+					<groupId>bouncycastle</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>bctsp-jdk14</artifactId>
+					<groupId>bouncycastle</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- xstream for the remoting with the collector server -->
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+
+		<!-- JETTY DEPENDENCIES FOR TESTING -->
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jetty</artifactId>
+			<version>${jetty.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jetty-util</artifactId>
+			<version>${jetty.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jetty-management</artifactId>
+			<version>${jetty.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>servlet-api-2.5</artifactId>
+			<version>6.1.14</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- SELENIUM DEPENDENCIES FOR TESTING -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.25.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- JETTY PLUGIN -->
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.26</version>
+				<configuration>
+					<scanIntervalSeconds>0</scanIntervalSeconds>
+					<stopKey>stopkey</stopKey>
+					<stopPort>9999</stopPort>
+					<connectors>
+						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+							<port>${var.jetty.httpPort}</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+					<webAppConfig>
+						<contextPath>/</contextPath>
+						<baseResource implementation="org.mortbay.resource.ResourceCollection">
+							<resourcesAsCSV>${basedir}/src/main/webapp</resourcesAsCSV>
+						</baseResource>
+					</webAppConfig>
+				</configuration>
+				<!-- Executions must be defined in child POMs. if pre-integration-test 
+					is defined here maven will execute it in this POM project -->
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- PROFILES SPECIFICALLY FOR WEBAPPS -->
+	<profiles>
+		<!-- ============ DEVELOPMENT PROFILE ============= -->
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<filtering>false</filtering>
+						<directory>src/main/java</directory>
+						<includes>
+							<include>**</include>
+						</includes>
+						<excludes>
+							<exclude>**/*.java</exclude>
+						</excludes>
+					</resource>
+					<resource>
+						<filtering>true</filtering>
+						<directory>src/main/conf</directory>
+						<excludes>
+							<exclude>**</exclude>
+						</excludes>
+					</resource>
+					<resource>
+						<filtering>false</filtering>
+						<directory>src/main/resource</directory>
+						<includes>
+							<include>**</include>
+						</includes>
+					</resource>
+					<resource>
+						<filtering>false</filtering>
+						<directory>src/mock/java</directory>
+						<includes>
+							<include>**</include>
+						</includes>
+						<excludes>
+							<exclude>**/*.java</exclude>
+						</excludes>
+					</resource>
+					<resource>
+						<filtering>true</filtering>
+						<directory>src/mock/conf</directory>
+						<includes>
+							<include>**</include>
+						</includes>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<!-- ================ QA PROFILE ================= -->
+		<profile>
+			<id>qa</id>
+			<build>
+				<resources>
+					<resource>
+						<filtering>false</filtering>
+						<directory>src/main/java</directory>
+						<includes>
+							<include>**</include>
+						</includes>
+						<excludes>
+							<exclude>**/*.java</exclude>
+						</excludes>
+					</resource>
+					<resource>
+						<filtering>true</filtering>
+						<directory>src/main/conf</directory>
+						<includes>
+							<include>**</include>
+						</includes>
+					</resource>
+					<resource>
+						<filtering>false</filtering>
+						<directory>src/main/resource</directory>
+						<includes>
+							<include>**</include>
+						</includes>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<!-- ============= PRODUCTION PROFILE =============== -->
+		<profile>
+			<id>production</id>
+			<build>
+				<resources>
+					<resource>
+						<filtering>false</filtering>
+						<directory>src/main/java</directory>
+						<includes>
+							<include>**</include>
+						</includes>
+						<excludes>
+							<exclude>**/*.java</exclude>
+						</excludes>
+					</resource>
+					<resource>
+						<filtering>true</filtering>
+						<directory>src/main/conf</directory>
+						<includes>
+							<include>**</include>
+						</includes>
+					</resource>
+					<resource>
+						<filtering>false</filtering>
+						<directory>src/main/resource</directory>
+						<includes>
+							<include>**</include>
+						</includes>
+					</resource>
+				</resources>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<webappDirectory>${project.build.directory}/root</webappDirectory>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>

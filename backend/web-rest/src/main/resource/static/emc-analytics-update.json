@@ -1,0 +1,23 @@
+{
+    "config": [
+        {
+            "config_app": "da_csp",
+            "version": "1.0.1.2097",
+            "appName": "Data Analytics CSP",
+            "checksum": "4343",
+            "download_path_primary": "http://www.zebra.com/content/dam/zebra/software/en/emc-analytics-update/DataAnalyticsEngine.apk",
+            "download_path_secondary": "https://zebra.box.com/shared/static/ftqgl1484f8r3uv7l77u.apk"
+        },
+        {
+            "config_app": "da_engine",
+            "version": "1.0.1.2097",
+            "appName": "Data Analytics Engine",
+            "checksum": "1212",
+            "download_path_primary": "http://www.zebra.com/content/dam/zebra/software/en/emc-analytics-update/DataAnalyticsCSP.apk",
+            "download_path_secondary": "https://zebra.box.com/shared/static/aslhg1g1nbtr1cb5fyab.apk"
+        }
+
+    ],
+    "poll_interval": "1440",
+    "config_path_URL": "http://api.zebra.com/v1/config/emc-analytics-update"
+}
