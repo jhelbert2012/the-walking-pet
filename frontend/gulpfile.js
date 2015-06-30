@@ -12,7 +12,7 @@ var jsSources = [
 	'components/scripts/tagline.js',
 	'components/scripts/template.js',
 ];
-
+ 
 var sassSources = ['components/sass/style.scss']
 
 gulp.task('coffee', function (){
