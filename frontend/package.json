@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/jhelbert2012/the-walking-pet/issues"
   },
-  "homepage": "https://github.com/jhelbert2012/the-walking-pet#readme"
+  "homepage": "https://github.com/jhelbert2012/the-walking-pet#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.6"
+  }
 }
