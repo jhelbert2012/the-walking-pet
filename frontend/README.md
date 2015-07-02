@@ -1,3 +1,3 @@
-# The Walking Pets
+# Workflows Course
 
-This is the template for the Frontend project.
+This project is an example of workflow management for a lynda.com course.
