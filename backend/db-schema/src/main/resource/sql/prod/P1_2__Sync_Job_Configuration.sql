@@ -1,2 +1,0 @@
-INSERT INTO `zebraapi`.`syncJob` (`id`, `format`, `hostname`, `dmar`, `password`, `path`, `port`, `protocol`, `user`, `localIdPosition`, `remoteIdPosition`) VALUES ('PCC_FTP', 'TSV', 'ftp.pcconnection.com', 'PCC', 'w8bre=Rawa', '/Zebra1.csv', '21', 'FTP', 'zebraftp', 1, 0);
-INSERT INTO `zebraapi`.`syncJob` (`id`, `format`, `hostname`, `dmar`, `password`, `path`, `port`, `protocol`, `user`, `localIdPosition`, `remoteIdPosition`) VALUES ('CDW_FTP', 'TSV_ZIP', 'pricefiles.cdw.com', 'CDW', 'jeztqNNy', '/Zebra.zip', '21', 'FTP', 'Zebra', 1, 2);
