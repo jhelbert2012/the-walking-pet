@@ -15,6 +15,6 @@ public class Application {
         SpringApplication springApplication = new SpringApplication(Application.class);
         springApplication.addListeners(new ApplicationPidFileWriter());  
         springApplication.run(args);
-    }
+    }  
 }
  
