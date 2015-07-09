@@ -22,7 +22,7 @@
         <connection>scm:git:git@github.com:jhelbert2012/the-walking-pet.git</connection>
         <url>scm:git:git@github.com:jhelbert2012/the-walking-pet.git</url>
         <developerConnection>scm:git:git@github.com:jhelbert2012/the-walking-pet.git</developerConnection>
-  </scm>
+    </scm>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -53,6 +53,18 @@
                     </checkModificationExcludes>
                     <!--<tagNameFormat>v@{project.version}</tagNameFormat>-->
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.2.5.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
