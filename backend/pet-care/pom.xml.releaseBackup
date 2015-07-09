@@ -22,7 +22,7 @@
         <connection>scm:git:git@github.com:jhelbert2012/the-walking-pet.git</connection>
         <url>scm:git:git@github.com:jhelbert2012/the-walking-pet.git</url>
         <developerConnection>scm:git:git@github.com:jhelbert2012/the-walking-pet.git</developerConnection>
-  </scm>
+    </scm>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
