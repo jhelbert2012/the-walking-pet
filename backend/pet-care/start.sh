@@ -1,1 +1,1 @@
-mvn spring-boot:run
+mvn -f backend/pet-care/pom.xml spring-boot:run
