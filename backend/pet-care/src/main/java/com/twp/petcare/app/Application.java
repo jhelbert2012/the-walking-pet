@@ -7,11 +7,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableAutoConfiguration
+@EnableAutoConfiguration 
 @EnableMongoRepositories(basePackages = "com.twp.petcare.repository")
 public class Application {
 
     public static void main(String[] args) {
+        System.out.println("Starting application");
         SpringApplication springApplication = new SpringApplication(Application.class);
         springApplication.addListeners(new ApplicationPidFileWriter());  
         springApplication.run(args);
