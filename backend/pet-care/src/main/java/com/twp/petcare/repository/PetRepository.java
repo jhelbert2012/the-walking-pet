@@ -11,5 +11,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface PetRepository extends MongoRepository<Pet, String> {
 
     List<Pet> findByName(@Param("name") String name);
+    List<Pet> findBySpecie(@Param("specie") String specie);
 
 }
