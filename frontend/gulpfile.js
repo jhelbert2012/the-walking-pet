@@ -113,4 +113,4 @@ gulp.task('json', function() {
 });
 
 gulp.task('default', ['html', 'json', 'coffee', 'js', 'compass', 'images', 'connect', 'watch']);
-gulp.task('deploy', ['html', 'json', 'coffee', 'js', 'compass', 'images', 'connect']);
+gulp.task('deploy', ['html', 'json', 'coffee', 'js', 'compass', 'images']);
