@@ -1,8 +1,5 @@
-/**
- * frisby.js: Facebook usage example
- * (C) 2012, Vance Lucas
- */
- var frisby = require('frisby');
+var frisby = require('frisby');
+var url = config.apiUrlNoAuth;
 
 // Global setup for all tests
 frisby.globalSetup({
@@ -11,16 +8,11 @@ frisby.globalSetup({
 	}
 });
 
-frisby.create('Get Printers')
-.get('http://api.zebra.com/v1/printers/105SL')
+frisby.create('Get Root')
+.get(url)
 .expectStatus(200)
 .expectHeaderContains('content-type', 'application/json')
 .expectJSONTypes({
-	id: String,
-	name: String
-})
-.expectJSON({
-	id: '105SL',
-	name: '105SL'
+	_links: Array
 })
 .toss();
