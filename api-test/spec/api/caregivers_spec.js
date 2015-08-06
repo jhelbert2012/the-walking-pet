@@ -1,4 +1,5 @@
 var frisby = require('frisby');
+var config = require('./config.js');
 var url = config.apiUrlNoAuth + 'caregivers';
 
 // Global setup for all tests
