@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="Frisby Test: Get Printers" errors="0" tests="1" failures="0" time="0.43" timestamp="2015-08-05T19:13:26">
+  <testcase classname="Frisby Test: Get Printers" name="
+	[ GET http://api.zebra.com/v1/printers/105SL ]" time="0.43"></testcase>
+</testsuite>
+</testsuites>

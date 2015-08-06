@@ -1,0 +1,23 @@
+{
+  "name": "twp-api-test",
+  "version": "0.0.1",
+  "description": "API Tester for TWP project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node --junitreport spec/api/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhelbert2012/the-walking-pet.git"
+  },
+  "author": "Helbert Rico",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhelbert2012/the-walking-pet/issues"
+  },
+  "homepage": "https://github.com/jhelbert2012/the-walking-pet#readme",
+  "devDependencies": {
+    "frisby": "^0.8.5",
+    "jasmine-node": "^1.14.5"
+  }
+}
