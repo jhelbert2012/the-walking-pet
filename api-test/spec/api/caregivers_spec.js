@@ -14,7 +14,7 @@ frisby.create('Get Caregivers')
 .expectStatus(200)
 .expectHeaderContains('content-type', 'application/json')
 .expectJSONTypes({
-	_links: Array,
+	_links: Object,
 	page: Object
 })
 .toss();

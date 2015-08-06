@@ -14,6 +14,6 @@ frisby.create('Get Root')
 .expectStatus(200)
 .expectHeaderContains('content-type', 'application/json')
 .expectJSONTypes({
-	_links: Array
+	_links: Object
 })
 .toss();
