@@ -1,10 +1,11 @@
 package com.twp.petcare.bean;
 
-import java.util.Date;
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
+
 public class User {
-    
+
     @Id
     private String id;
     private int documentType;
@@ -18,6 +19,28 @@ public class User {
     private String phoneNumber;
     private String email;
     private Date birthday;
+
+    public User(int documentType, String documentNumber, String username, String password, char gender
+            , String name, String surname, String address, String phoneNumber, String email, Date birthday) {
+        this.documentType = documentType;
+        this.documentNumber = documentNumber;
+        this.username = username;
+        this.password = password;
+        this.gender = gender;
+        this.name = name;
+        this.surname = surname;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.birthday = birthday;
+    }
+
+    public User(String id) {
+        this.id = id;
+    }
+
+    public User() {
+    }
 
     /**
      * @return the documentType
@@ -171,5 +194,13 @@ public class User {
      */
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

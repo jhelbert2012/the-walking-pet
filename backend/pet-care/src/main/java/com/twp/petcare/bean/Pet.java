@@ -13,7 +13,25 @@ public class Pet {
     private int breed;
     private int height;
     private int weight;
-    private String colour;
+    private String color;
+
+    public Pet(String name, int age, char genre, int specie, int breed, int height, int weight, String color) {
+        this.name = name;
+        this.age = age;
+        this.genre = genre;
+        this.specie = specie;
+        this.breed = breed;
+        this.height = height;
+        this.weight = weight;
+        this.color = color;
+    }
+
+    public Pet(String id) {
+        this.id = id;
+    }
+
+    public Pet() {
+    }
 
     //TODO How is the relationship between pets and vaccines? a list?
 
@@ -92,21 +110,33 @@ public class Pet {
     /**
      * @return the genre
      */
-    public int getGenre() {
+    public char getGenre() {
         return genre;
+    }
+
+    public void setGenre(char genre) {
+        this.genre = genre;
     }
 
     /**
      * @return the colour
      */
-    public String getColour() {
-        return colour;
+    public String getColor() {
+        return color;
     }
 
     /**
-     * @param colour the colour to set
+     * @param color the colour to set
      */
-    public void setColour(String colour) {
-        this.colour = colour;
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
