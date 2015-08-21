@@ -15,6 +15,6 @@ public interface PetRepository extends MongoRepository<Pet, String>, PetReposito
 
     List<Pet> findBySpecie(@Param("specie") int specie);
 
-    List<Pet> findByColorIgnoreCase(@Param("color") String color, Pageable pageable);
+    List<Pet> findByColourIgnoreCase(@Param("color") String color, Pageable pageable);
 
 }

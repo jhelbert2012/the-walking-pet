@@ -104,7 +104,7 @@ public class Application implements CommandLineRunner {
         }
         System.out.println("Customers found with findByColorIgnoreCase('black', pageable):");
         System.out.println("--------------------------------");
-        for (Pet pet : petRepository.findByColorIgnoreCase("black", pageable)) {
+        for (Pet pet : petRepository.findByColourIgnoreCase("black", pageable)) {
             System.out.println(pet);
         }
 

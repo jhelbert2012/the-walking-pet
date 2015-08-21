@@ -1,7 +1,9 @@
 package com.twp.petcare.bean;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Pet {
 
     @Id
@@ -13,9 +15,9 @@ public class Pet {
     private int breed;
     private int height;
     private int weight;
-    private String color;
+    private String colour;
 
-    public Pet(String name, int age, char genre, int specie, int breed, int height, int weight, String color) {
+    public Pet(String name, int age, char genre, int specie, int breed, int height, int weight, String colour) {
         this.name = name;
         this.age = age;
         this.genre = genre;
@@ -23,7 +25,7 @@ public class Pet {
         this.breed = breed;
         this.height = height;
         this.weight = weight;
-        this.color = color;
+        this.colour = colour;
     }
 
     public Pet(String id) {
@@ -121,15 +123,15 @@ public class Pet {
     /**
      * @return the colour
      */
-    public String getColor() {
-        return color;
+    public String getColour() {
+        return colour;
     }
 
     /**
-     * @param color the colour to set
+     * @param colour the colour to set
      */
-    public void setColor(String color) {
-        this.color = color;
+    public void setColour(String colour) {
+        this.colour = colour;
     }
 
     public String getId() {
